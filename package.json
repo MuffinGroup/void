@@ -1,5 +1,5 @@
 {
-  "name": "my-qwik-basic-starter",
+  "name": "void-editor",
   "description": "Demo App with Routing built-in (recommended)",
   "engines": {
     "node": ">=15.0.0"
@@ -9,6 +9,7 @@
     "build": "qwik build",
     "build.client": "vite build",
     "build.preview": "vite build --ssr src/entry.preview.tsx",
+    "build.server": "vite build -c adapters/static/vite.config.ts",
     "build.types": "tsc --incremental --noEmit",
     "deploy": "echo 'Run \"npm run qwik add\" to install a server adapter'",
     "dev": "vite --mode ssr",
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@builder.io/qwik": "^1.2.11",
     "@builder.io/qwik-city": "^1.2.11",
+    "@tauri-apps/cli": "^1.4.0",
     "@types/eslint": "8.44.1",
     "@types/node": "^20.4.5",
     "@typescript-eslint/eslint-plugin": "6.2.0",
@@ -34,5 +36,8 @@
     "undici": "5.22.1",
     "vite": "4.4.7",
     "vite-tsconfig-paths": "4.2.0"
+  },
+  "dependencies": {
+    "qwik": "^1.0.57"
   }
 }
