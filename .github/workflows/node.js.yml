@@ -22,6 +22,9 @@ jobs:
         with:
           node-version: 14
 
+      - name: Install pnpm
+        run: npm install -g pnpm
+
       - name: Install Tauri CLI
         run: npm install -g @tauri-apps/cli
 
