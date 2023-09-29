@@ -38,6 +38,7 @@
     "vite-tsconfig-paths": "4.2.0"
   },
   "dependencies": {
+    "@tauri-apps/api": "^1.5.0",
     "qwik": "^1.0.57"
   }
 }
