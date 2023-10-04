@@ -1,4 +1,4 @@
-use std::{fs::File, io::Write};
+use std::{fs::{File, self}, io::Write};
 
 use super::{Project, ProjType};
 
@@ -23,12 +23,34 @@ edition = "2021"
 [dependencies]
 "#, self.name
         );
-        let mut file = match File::create(format!("{}/Cargo.toml", self.proj_dir)) {
+
+        let main_layout =
+r#"fn main() {
+    println!("Hello, World!");
+}
+"#;
+
+        let mut cfg_file = match File::create(format!("{}/Cargo.toml", self.proj_dir)) {
             Ok(file) => file,
             Err(err) => panic!("{}", err),
         };
 
-        match file.write_all(cfg_layout.as_bytes()) {
+        match cfg_file.write_all(cfg_layout.as_bytes()) {
+            Ok(()) => (),
+            Err(err) => panic!("{}", err),
+        }
+
+        match fs::create_dir(format!("{}/src", self.proj_dir)) {
+            Ok(()) => (),
+            Err(err) => panic!("{}", err),
+        }
+
+        let mut main_file = match File::create(format!("{}/src/main.rs", self.proj_dir).as_str()) {
+            Ok(file) => file,
+            Err(err) => panic!("{}", err),
+        };
+
+        match main_file.write_all(main_layout.as_bytes()) {
             Ok(()) => (),
             Err(err) => panic!("{}", err),
         }

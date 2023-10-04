@@ -14,8 +14,8 @@ export default component$(() => {
   return (
     <>
       <div>
+        <FancyButton text="Create sus project" onButtonClick$={() => window.location.href="/project_manager/"} />
         <FancyButton text="Create rust project" onButtonClick$={() => create_proj("test", "rs")} />
-        <FancyButton text="Create typescript project" onButtonClick$={() => create_proj("test", "ts")} />
       </div>
     </>
   );
